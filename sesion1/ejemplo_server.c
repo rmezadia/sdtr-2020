@@ -5,7 +5,7 @@
  */
 
 #include "ejemplo.h"
-
+#include <stdio.h>
 /*Define la cabecera del procedimiento remoto*/
 /*Los parametros se reciben en *argp*/
 int * nllamadas_1_svc(void *argp, struct svc_req *rqstp)
@@ -14,5 +14,17 @@ int * nllamadas_1_svc(void *argp, struct svc_req *rqstp)
 
 	result=result+1;
 
+	return &result;
+}
+
+//Implementamos el conexion1.
+char ** conexion_1_svc(char **argp, struct svc_req *rqstp){
+	static char * result;
+	char cadena[50];
+	static int contador;
+	contador = contador+1;
+
+	sprintf(cadena, "El usuario %s se ha conectado %d\n",*argp,contador);
+	result = strdup(cadena);
 	return &result;
 }

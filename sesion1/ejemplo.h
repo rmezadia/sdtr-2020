@@ -19,15 +19,20 @@ extern "C" {
 
 #if defined(__STDC__) || defined(__cplusplus)
 #define nllamadas 1
-
 extern  int * nllamadas_1(void *, CLIENT *);
 extern  int * nllamadas_1_svc(void *, struct svc_req *);
+#define conexion 2
+extern  char ** conexion_1(char **, CLIENT *);
+extern  char ** conexion_1_svc(char **, struct svc_req *);
 extern int nprog_1_freeresult (SVCXPRT *, xdrproc_t, caddr_t);
 
 #else /* K&R C */
 #define nllamadas 1
-extern  int * nllamadas_1(); /*En el stub del cliente se usa ese nombre. El 1 ese es 1 porque es el num de poc de le hemos puesto*/
-extern  int * nllamadas_1_svc(); /*En el stub del servidor se usa ese nombre*/
+extern  int * nllamadas_1();
+extern  int * nllamadas_1_svc();
+#define conexion 2
+extern  char ** conexion_1();
+extern  char ** conexion_1_svc();
 extern int nprog_1_freeresult ();
 #endif /* K&R C */
 
